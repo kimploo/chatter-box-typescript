@@ -15,8 +15,8 @@ reuqestHandler 함수는 이미 basic-server.js 파일에서 사용 했지만, �
 requestHandler 함수를 export 하여 basic-server.js 에서 사용 할 수 있게 하세요
 ************************************************************* */
 
-const resultsArray = {
-  results: [] as object[],
+const resJSON = {
+  messages: [] as object[],
 };
 
 function requestHandler(request: http.IncomingMessage, response: http.ServerResponse): void {
@@ -50,7 +50,7 @@ function requestHandler(request: http.IncomingMessage, response: http.ServerResp
   } else if (request.method === 'GET') {
     if (request.url === '/classes/messages') {
       response.writeHead(200, defaultCorsHeaders);
-      const data: string = JSON.stringify(resultsArray.results);
+      const data: string = JSON.stringify(resJSON.messages);
       response.end(data);
     } else {
       response.writeHead(404, defaultCorsHeaders);
@@ -67,7 +67,7 @@ function requestHandler(request: http.IncomingMessage, response: http.ServerResp
         })
         .on('end', () => {
           const data: object = JSON.parse(body);
-          resultsArray.results.push(data);
+          resJSON.messages.push(data);
           // ts(2345) Argument of type 'string' is not assignable to parameter of type 'never'. Without defining the array type, it by default will be never.
           // https://stackoverflow.com/questions/52423842/what-is-not-assignable-to-parameter-of-type-never-error-in-typescript
           response.end(JSON.stringify(data));
