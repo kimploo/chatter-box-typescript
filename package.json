@@ -4,19 +4,35 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node-dev --respawn src/index.ts",
+    "start": "ts-node-dev --respawn src/basic-server.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
+    "test": "jest src/__test__/LiveServerSpec.test.js --detectOpenHandles",
     "build": "tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.2",
+    "@types/jest": "^25.1.0",
     "@types/node": "^13.1.8",
+    "@types/request": "^2.48.4",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "@typescript-eslint/typescript-estree": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^6.3.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "request": "^2.88.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.0.0",
     "ts-node": "^8.6.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "shortid": "^2.2.15"
+    "express": "^4.17.1"
   }
 }
